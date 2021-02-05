@@ -13,36 +13,14 @@ import java.util.stream.Collectors;
 public class SortByPage {
 
 
-
-
-
-    public List<WebElement> getBrowseByOption() {
-        Select browseByOption = getBrowseBySelect();
-        return browseByOption.getOptions();
-
-    }
-
-
-    public List<String> getBrowseByOptionText() {
-        return getBrowseByOption().stream().map(WebElement::getText).collect(Collectors.toList());
-    }
-
-    public List<String> getSortByOptionText() {
-        return getSortBySelect().getOptions().stream().map(WebElement::getText).collect(Collectors.toList());
-    }
-    public Select getBrowseBySelect(){
-        WebElement element = getDriver().findElement(By.id("BrowseBy"));
-        return new Select(element);
-    }
-
-    public WebDriver getDriver(){
-        return Driver.getDriver();
-    }
-
-
     public Select getSortBySelect(){
         WebElement element = getDriver().findElement(By.id("SortBy"));
         return new Select(element);
+    }
+
+
+    public List<String> getSortByOptionText() {
+        return getSortBySelect().getOptions().stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
 
@@ -70,9 +48,8 @@ public class SortByPage {
 
 
     public static int safeString2Int(String value) {
-        boolean var1 = false;
 
-        int total;
+        int total; // int num
         try {
             total = Integer.valueOf(value);
         } catch (NumberFormatException var3) {
@@ -96,12 +73,21 @@ public class SortByPage {
     }
 
 
+    public WebDriver getDriver(){
+        return Driver.getDriver();
+    }
 
     /*
 
+// public List<String> getBrowseByOptionText() {
+    //    return getBrowseByOption().stream().map(WebElement::getText).collect(Collectors.toList());
+    //}
 
 
-
+//public Select getBrowseBySelect(){
+      //  WebElement element = getDriver().findElement(By.id("BrowseBy"));
+        //return new Select(element);
+    //}
 
     public List<WebElement> getBrowseByOption() {
         Select browseByOption = getBrowseBySelect();
@@ -114,6 +100,11 @@ public class SortByPage {
         return getBrowseByOption().stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
+//  public List<WebElement> getBrowseByOption() {
+    //    Select browseByOption = getBrowseBySelect();
+      //  return browseByOption.getOptions();
+
+    //}
 
 */
 

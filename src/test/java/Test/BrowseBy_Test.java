@@ -2,6 +2,7 @@ package Test;
 
 import Pages.BrowseByPage;
 import Utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -21,11 +22,13 @@ public class BrowseBy_Test {
     }
 
     @Test
-    public void test01_add_task_comment_telus_admin() {
-        //Given user on the clearance projectors pages
+    public void Browser() {
+        //Given user on the clearance projectors paBy_Testges
         String url = "https://christieclearanceprojectors.com/collections/clearance-projectors";
         BrowseByPage browseByPage = new BrowseByPage();
         Driver.getDriver().get(url);
+
+
 
         // listing all the options available under the Browser by option
         List<String> browseByOptionsText = browseByPage.getBrowseByOptionText();

@@ -21,9 +21,10 @@ public class BrowseByPage {
 
     public Select getBrowseBySelect() {
         WebElement element = getDriver().findElement(By.id("BrowseBy"));
-        return new Select(element);
+        return new Select( element);
     }
 
+    // get all the options from the select dropdown
     public List<WebElement> getBrowseByOption() {
         Select browseByOption = getBrowseBySelect();
         return browseByOption.getOptions();
@@ -32,6 +33,11 @@ public class BrowseByPage {
     public List<String> getBrowseByOptionText() {
         return getBrowseByOption().stream().map(WebElement::getText).collect(Collectors.toList());
     }
+
+
+
+
+
 
 
     //private List<String> getBrowseByOptionText() {

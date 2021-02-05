@@ -42,7 +42,7 @@ public class SortBy_Test {
             //"Then user should be able to see correct items returned.");
             if (each.contains("A-Z")) {
 
-                List<String> expectedSortedList = null;
+                List<String> expectedSortedList=null;
                 List<String> sortedByInterfaceList = null;
 
                 sortedByInterfaceList = sortByPage.getAllItemsTitles().stream().map(WebElement::getText).collect(Collectors.toList());
@@ -54,16 +54,21 @@ public class SortBy_Test {
 
             if (each.contains("Z-A")) {
 
-                List<String> expectedSortedList = null;
+               // List<String> expectedSortedList = null;
                 List<String> sortedByInterfaceList = null;
 
                 sortedByInterfaceList = sortByPage.getAllItemsTitles().stream().map(WebElement::getText).collect(Collectors.toList());
-                expectedSortedList = new ArrayList<>(sortedByInterfaceList);
+                List<String> expectedSortedList = new ArrayList<>(sortedByInterfaceList);
                 Collections.sort(expectedSortedList, Collections.reverseOrder());
                 Assert.assertEquals( expectedSortedList, sortedByInterfaceList);
 
-            }
 
+            }
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (each.contains("high to low")) {
 
                 List<String> expectedSortedList = null;
@@ -71,7 +76,7 @@ public class SortBy_Test {
 
                 sortedByInterfaceList = sortByPage.getAllItemsPricesTexts();
                 expectedSortedList = new ArrayList<>(sortedByInterfaceList);
-                Collections.sort(expectedSortedList, sortByPage.NumberComparatorAsc);
+                Collections.sort(expectedSortedList, sortByPage.NumberComparatorAsc);// should be sortByPage.NumberComparators Dsc
                 Assert.assertEquals( expectedSortedList, sortedByInterfaceList);
 
             }
@@ -83,7 +88,7 @@ public class SortBy_Test {
 
                 sortedByInterfaceList = sortByPage.getAllItemsPricesTexts();
                 expectedSortedList = new ArrayList<>(sortedByInterfaceList);
-                Collections.sort(expectedSortedList, sortByPage.NumberComparatorDsc);
+                Collections.sort(expectedSortedList, sortByPage.NumberComparatorDsc);// should be sortByPage.NumberComparators Dsc
                 Assert.assertEquals( expectedSortedList, sortedByInterfaceList);
 
             }
